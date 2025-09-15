@@ -87,13 +87,10 @@ steps:
       - "builds"
       - "triggers"
       - "run"
-      - "deploy-maps-agent"
-      - "--region"
-      - "$LOCATION"
-      - "--project"
-      - "$PROJECT_ID"
-      - "--sha"
-      - $COMMIT_SHA
+      - "deploy-dprzek-vertex2"   # <-- FIX: Use the correct trigger name from your screenshot
+      - "--region=${_REGION}"      # <-- FIX: Use the substitution variable defined in this file
+      - "--project=${PROJECT_ID}" # Use the standard substitution for the project ID
+      - "--sha=${COMMIT_SHA}"     # It's good practice to wrap variables in ${}
 
   - name: gcr.io/cloud-builders/gcloud
     id: echo-view-build-trigger-link
